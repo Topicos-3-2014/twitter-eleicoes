@@ -9,8 +9,6 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 
-
-
 public class Utils {
 
 	private static final String token = "81692789-sJyBL7OcATiufRK3xFZX9rQNY4vjZfkOy0h8pQg0z";
@@ -34,7 +32,17 @@ public class Utils {
 		try{
 			Query query = new Query(queryString);
 			query.setCount(tweetCount);
+			query.setSince("2014-11-08");
+			query.setUntil("2014-11-09");
+			
 			QueryResult result = twitter.search(query);
+			//QueryResult nextResult;
+			
+			/*
+			if (result.hasNext()) {
+				nextResult = twitter.search(result.nextQuery());
+			}
+			*/
 			ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 			for (Status status : result.getTweets()) {
 				int id = (int) status.getId();
@@ -43,8 +51,10 @@ public class Utils {
 				String location = status.getUser().getLocation();
 				int favoriteds = status.getFavoriteCount();
 				int retweeteds = status.getRetweetCount();
+				String country_code = (status.getPlace() == null ? "empty" : status.getPlace().getCountryCode());
+				String countryFull = (status.getPlace() == null ? "empty" : status.getPlace().getFullName());
 			
-				Tweet tweet = new Tweet(id, user, text, queryString, location, favoriteds, retweeteds);
+				Tweet tweet = new Tweet(id, user, text, queryString, location, favoriteds, retweeteds, country_code, countryFull);
 				tweets.add(tweet);
 			}
 			return tweets;
@@ -63,7 +73,7 @@ public class Utils {
 		}
 	}
 
-	public static void main(String[] args) throws IllegalStateException, TwitterException, ClassNotFoundException {
+	public static void main(String[] args) throws IllegalStateException, TwitterException, ClassNotFoundException, SQLException {
 
 		ITweetController tweetController = null;
 		try {
@@ -72,16 +82,13 @@ public class Utils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//tweetController.inserirTweet(121, "teste", "oi");
-		
+
 		DataList data = new DataList();
 		Twitter twitter = createTwitter();
 		
-		//System.out.println(twitter.getScreenName());
-		
 		for (int j = 0 ; j < data.dataList.size() ; j++) {
 
-			ArrayList<Tweet> t = search(twitter, data.dataList.get(j), 8000);
+			ArrayList<Tweet> t = search(twitter, data.dataList.get(j), 1000);
 			
 			for (int i = 0 ; i < t.size() ; i++) {
 				int _id = t.get(i).getId();
@@ -91,11 +98,12 @@ public class Utils {
 				String _location = t.get(i).getLocation();
 				int _favoriteds = t.get(i).getFav();
 				int _retweeteds = t.get(i).getRet();
+				String _country_code = t.get(i).getCountry_code();
+				String _countryFull = t.get(i).getCountryFull();
 
-				tweetController.inserirTweet(_id, _user, _text, _ss, _location, _favoriteds, _retweeteds);
+				tweetController.inserirTweet(_id, _user, _text, _ss, _location, _favoriteds, _retweeteds, _country_code, _countryFull);
 			}
 		}
 		
 	}
 }
-

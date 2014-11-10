@@ -1,6 +1,4 @@
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class TweetController implements ITweetController {
@@ -18,8 +16,8 @@ public class TweetController implements ITweetController {
 		return instance;
 	}
 
-	public void inserirTweet(int id, String user, String text, String ss, String location, int favoriteds, int retweeteds) {
-		Tweet t_new = new Tweet(id, user, text, ss, location, favoriteds, retweeteds);
+	public void inserirTweet(int id, String user, String text, String ss, String location, int favoriteds, int retweeteds, String country_code, String countryFull) {
+		Tweet t_new = new Tweet(id, user, text, ss, location, favoriteds, retweeteds, country_code, countryFull);
 		try {
 			tweet.create(t_new);
 		} catch (SQLException e) {
@@ -48,13 +46,14 @@ public class TweetController implements ITweetController {
 	}
 	
 	
-	public List<Tweet> mostrarTweet(int id){
-		List<Tweet> listaUsuario = new ArrayList<Tweet>();
+	public List<Result> mostrarTweets(){
+		List<Result> listaUsuario = new ArrayList<Result>();
 		try {
-			listaUsuario = tweet.show(id);
+			listaUsuario = tweet.showAll();
 		} catch (SQLException e) {
 			System.err.println("Erro ao consultar tweet: " + e);
 		}
 		return listaUsuario;
-	}*/
+	}
+	*/
 }

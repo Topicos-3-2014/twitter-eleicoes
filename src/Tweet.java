@@ -10,8 +10,10 @@ public class Tweet {
 	public String location;
 	public int favoriteds;
 	public int retweeteds;
+	public String country_code;
+	public String countryFull;
 
-	public Tweet(int id, String user, String text, String ss, String location, int favoriteds, int retweeteds){
+	public Tweet(int id, String user, String text, String ss, String location, int favoriteds, int retweeteds, String country_code, String countryFull){
 		this.id = id;
 		this.user = user;
 		this.text = text;
@@ -19,6 +21,8 @@ public class Tweet {
 		this.location = location;
 		this.favoriteds = favoriteds;
 		this.retweeteds = retweeteds;
+		this.country_code = country_code;
+		this.countryFull = countryFull;
 		
 	}
 	
@@ -74,6 +78,22 @@ public class Tweet {
 
 	public void setRet(int retweeteds) {
 		this.retweeteds = retweeteds;
+	}
+
+	public String getCountry_code() {
+		return country_code;
+	}
+
+	public void setCountry_code(String country_code) {
+		this.country_code = country_code;
+	}
+
+	public String getCountryFull() {
+		return countryFull;
+	}
+
+	public void setCountryFull(String countryFull) {
+		this.countryFull = countryFull;
 	}
 
 }
