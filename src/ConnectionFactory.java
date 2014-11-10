@@ -6,9 +6,7 @@ public class ConnectionFactory {
 	
     public Connection getConnection() throws SQLException, ClassNotFoundException {
        
-    	//Class.forName("com.mysql.jbdc.Driver");
-		//System.out.println("SQL connecting...");
-    	
     	return DriverManager.getConnection("jdbc:mysql://localhost:3306/tweet?useUnicode=true&amp;characterEncoding=utf8","root","admin");
     }
+
 }

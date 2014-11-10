@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class DataList {
 
 	public ArrayList<String> dataList = new ArrayList<String>();
@@ -16,6 +15,7 @@ public class DataList {
 		this.dataList.add("Kaká Werá");
 		this.dataList.add("kaka wera");
 		this.dataList.add("ebola");
+		
 		/*
 		this.dataList.add("#Dilmais"); 
 		this.dataList.add("#Dilma"); 
@@ -51,6 +51,5 @@ public class DataList {
 		this.dataList.add("#Dilmando13");
 		this.dataList.add("#testetesteteste");
 		*/
-		
 	}
 }

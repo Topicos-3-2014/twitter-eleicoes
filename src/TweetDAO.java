@@ -9,13 +9,13 @@ public class TweetDAO implements ITweetDAO {
 	public TweetDAO() throws SQLException, ClassNotFoundException {
 		this.connection = new ConnectionFactory().getConnection();
 	}
-	
+
 	// Adiciona um tweet no Banco
 	public void create(Tweet tweet) throws SQLException {
-		
+
 		String sql = "INSERT INTO tweet (id, user, text, ss, location, favoriteds, retweeteds, country_code, countryFull) VALUES(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement stmt = connection.prepareStatement(sql);
-		
+
 		stmt.setInt(1, tweet.getId());
 		stmt.setString(2, tweet.getUser());
 		stmt.setString(3, tweet.getText());
@@ -25,17 +25,17 @@ public class TweetDAO implements ITweetDAO {
 		stmt.setInt(7, tweet.getRet());
 		stmt.setString(8, tweet.getCountry_code());
 		stmt.setString(9, tweet.getCountryFull());
-		
+
 		stmt.execute();
 		stmt.close();
 	}
 
 	/*// Remove um tweet no Banco
 	public void remove(Tweet tweet) throws SQLException {
-		
+
 		String sql = "DELETE from tweet where id = ?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
-		
+
 		stmt.setInt(1, tweet.getId());
 		stmt.execute();
 		stmt.close();
@@ -43,10 +43,10 @@ public class TweetDAO implements ITweetDAO {
 
 	// Altera os dados do tweet
 	public void update(Tweet tweet) throws SQLException {
-		
+
 		String sql = "update tweet set id = ?, user = ?, text = ?, ss = ?, location = ?, favorited = ?, retweeted = ? where id = ?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
-		
+
 		stmt.setInt(1, tweet.getId());
 		stmt.setString(2, tweet.getUser());
 		stmt.setString(3, tweet.getText());
@@ -54,22 +54,22 @@ public class TweetDAO implements ITweetDAO {
 		stmt.setString(5, tweet.getLocation());
 		stmt.setInt(6, tweet.getFav());
 		stmt.setInt(7, tweet.getRet());
-		
+
 		stmt.execute();
 		stmt.close();	
 	}
-	
+
 	// Mostra todos os tweets no Banco
 	public List<Tweet> show(int id) throws SQLException {
-		
+
 		Tweet tweet = new Tweet();
 		String sql = "SELECT * from tweet where id like (?) order by text";
 		PreparedStatement stmt = connection.prepareStatement(sql);
-		
+
 		stmt.setInt(1, id);
 		List <Tweet> minhaLista = new ArrayList<Tweet>();
 		ResultSet rs = stmt.executeQuery();
-		
+
 		while (rs.next()) {
 			tweet.setId(rs.getInt("id"));
 			tweet.setUser(rs.getString("user"));
@@ -79,14 +79,14 @@ public class TweetDAO implements ITweetDAO {
 			tweet.setFav(rs.getInt("favoriteds"));
 			tweet.setRet(rs.getInt("retweeteds"));
 			minhaLista.add(tweet);
-			
+
 		}	
 		rs.close();
 		stmt.close();
 		return minhaLista;
 	}
-	*/
-	
+	 */
+
 	//imprime todos com base na query dada
 	public void showAll() throws SQLException {
 		String sql = "select ss, sum(favoriteds), sum(retweeteds), count(ss) from tweet group by ss order by count(ss)";
@@ -94,40 +94,85 @@ public class TweetDAO implements ITweetDAO {
 		ResultSet rs = stmt.executeQuery();
 
 		while (rs.next()) {
-			
+
 			System.out.println(rs.getString("ss") + " | Fav: " +
-								rs.getInt("sum(favoriteds)") + " | Ret: " +
-								rs.getInt("sum(retweeteds)") + " | Qnt: " +
-								rs.getInt("count(ss)"));
+					rs.getInt("sum(favoriteds)") + " | Ret: " +
+					rs.getInt("sum(retweeteds)") + " | Qnt: " +
+					rs.getInt("count(ss)"));
 		}	
 		rs.close();
 		stmt.close();
 	}
-	
+
 	//guarda todos numa lista todos com base na query dada
 	public List<Result> getAll() throws SQLException {
 		Result res = new Result();
+		List<Result> minhaLista = new ArrayList<Result>();
+		
 		String sql = "select ss, sum(favoriteds), sum(retweeteds), count(ss) from tweet group by ss order by count(ss)";
-		PreparedStatement stmt = connection.prepareStatement(sql);
-
-		List <Result> minhaLista = new ArrayList<Result>();
+		PreparedStatement stmt = connection.prepareStatement(sql);		
 		ResultSet rs = stmt.executeQuery();
 		
-		int index = 0;
-		
-		while (rs.next()) {
+		List<String> ssL = new ArrayList<String>();
+		List<Integer> counterL = new ArrayList<Integer>();
+
+			while (rs.next()) {
+
+				ssL.add(rs.getString("ss"));
+				
+				res.setSs(rs.getString("ss"));
+				res.setSumFavoriteds(rs.getInt("sum(favoriteds)"));
+				res.setSumRetweets(rs.getInt("sum(retweeteds)"));
+				res.setCountSS(rs.getInt("count(ss)"));
+				minhaLista.add(res);
+				
+			}	
 			
-			res.setSs(rs.getString("ss"));
-			res.setSumFavoriteds(rs.getInt("sum(favoriteds)"));
-			res.setSumRetweets(rs.getInt("sum(retweeteds)"));
-			res.setCountSS(rs.getInt("count(ss)"));
-			minhaLista.add(index, res);
-			index = index + 1;
-		}	
+			for (int i = 0 ; i < ssL.size() ; i++) {
+				System.out.println(ssL.get(i));
+			}
+
+			
 		rs.close();
 		stmt.close();
+
 		return minhaLista;
 	}
-	
 
+	
+	public List<String> getSsList() throws SQLException {
+			
+		String sql = "select ss from tweet group by ss order by count(ss)";
+		PreparedStatement stmt = connection.prepareStatement(sql);		
+		ResultSet rs = stmt.executeQuery();
+		
+		List<String> ssL = new ArrayList<String>();
+
+			while (rs.next()) {
+				ssL.add(rs.getString("ss"));
+			}	
+
+		rs.close();
+		stmt.close();
+
+		return ssL;
+	}
+	
+	public List<Integer> getCountList() throws SQLException {
+		
+		String sql = "select count(ss) from tweet group by ss order by count(ss)";
+		PreparedStatement stmt = connection.prepareStatement(sql);		
+		ResultSet rs = stmt.executeQuery();
+		
+		List<Integer> countL = new ArrayList<Integer>();
+
+			while (rs.next()) {
+				countL.add(rs.getInt("count(ss)"));
+			}	
+
+		rs.close();
+		stmt.close();
+
+		return countL;
+	}
 }
