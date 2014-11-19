@@ -218,3 +218,131 @@ $(function () {
         }]
     });
 });
+
+$(function () {
+    $('#chart5').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Análise das ocorrências de hashtag de voto, pós eleição'
+        },
+        xAxis: {
+            categories: ['Dilma', 'Aécio'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Ocorrências Hashtags',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' Ocorrências'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Dia 27/10',
+            data: [538, 129]
+        }, {
+            name: 'Dia 28/10',
+            data: [470, 14]
+        }, {
+            name: 'Dia 29/10',
+            data: [312, 6]
+        }, {
+            name: 'Dia 30/10',
+            data: [376, 11]
+        }]
+    });
+});
+
+$(function () {
+    $('#chart6').highcharts({
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Ocorrências do nome dos candidatos antes do segundo turno  (entre 25 e 26 de Outubro)'
+        },
+        tooltip: {
+            pointFormat: '{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            data: [
+                ['Aécio',    2427],
+                ['Dilma',   3192],
+            ]
+        }]
+    });
+});
+
+$(function () {
+    $('#chart7').highcharts({
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Candidatos com mais tweets retweetados + favoritados (entre 25 e 26 de Outubro)'
+        },
+        tooltip: {
+            pointFormat: '{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            data: [
+                ['Aécio',    36744],
+                ['Dilma',   55301],
+            ]
+        }]
+    });
+});
