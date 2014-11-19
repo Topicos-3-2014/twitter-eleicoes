@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.1)  18 NOV 2014 20:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.1)  18 NOV 2014 21:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -285,47 +285,30 @@ Overfull \hbox (31.61421pt too wide) in paragraph at lines 28--28
  []
 
 ! Undefined control sequence.
-l.33 ...ootstrap, Python, Java, JavaScript, \LaTex
+l.35 ...ootstrap, Python, Java, JavaScript, \LaTex
                                                   , Twitter4J, retweets, met...
 
 ? 
-
-Overfull \hbox (7.96315pt too wide) in paragraph at lines 36--37
-\T1/aer/m/n/9 Em out-ubro de 2014 ocor-reu no Brasil eleições para vereadores,
- []
-
-
-Overfull \hbox (3.63908pt too wide) in paragraph at lines 36--37
-\T1/aer/m/n/9 dep-uta-dos es-tad-u-ais, dep-uta-dos fed-erais, gov-er-nadores e
- pres-
- []
-
-
-Overfull \hbox (12.34625pt too wide) in paragraph at lines 40--42
-[]\T1/aer/m/n/9 Em se tratando de política es-sas fer-ra-men-tas são bem aprove
-itas
- []
-
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
 (./artigo-tex.aux) ) 
 Here is how much of TeX's memory you used:
- 2759 strings out of 493117
- 35143 string characters out of 6135434
+ 2756 strings out of 493117
+ 35122 string characters out of 6135434
  97697 words of memory out of 5000000
- 6166 multiletter control sequences out of 15000+600000
- 44167 words of font info for 58 fonts, out of 8000000 for 9000
+ 6165 multiletter control sequences out of 15000+600000
+ 42820 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,10n,28p,768b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r
 .enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pf
-b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-</usr/local/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/l
-ocal/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
-Output written on artigo-tex.pdf (1 page, 57694 bytes).
+b></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on artigo-tex.pdf (1 page, 58148 bytes).
 PDF statistics:
  29 PDF objects out of 1000 (max. 8388607)
  20 compressed objects within 1 object stream
