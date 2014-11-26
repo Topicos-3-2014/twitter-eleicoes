@@ -1,0 +1,50 @@
+\begin{thebibliography}{1}
+
+\bibitem{andranik:2010}
+T.~O.~S. Andranik~Tumasjan.
+\newblock Predicting elections with twitter: What 140 characters reveal about
+  political sentiment.
+\newblock {\em Association for the Advancement of Artificial Intelligence},
+  2010.
+
+\bibitem{bbcbrasil:rafael}
+R.~Barifouse.
+\newblock Eleicoes 2014: Novos habitos criam pleito mais conectado do mundo,
+  2014.
+
+\bibitem{uoleleicoes}
+U.~eleicoes 2014.
+\newblock http://eleicoes.uol.com.br/2014/pesquisas-eleitorais/brasil/2-turno/.
+\newblock Datafolha, TV Globo e Folha de S.Paulo, Last access: 2014-11-20.
+
+\bibitem{highcharts}
+Highcharts.
+\newblock Highcharts and highstock documentation.
+\newblock http://www.highcharts.com/docs.
+\newblock Last access: 2014-10-11.
+
+\bibitem{mining:oreilly}
+M.~A. Russell.
+\newblock {\em Mining the Social Web}.
+\newblock O'Reilly, 2014.
+
+\bibitem{twitter:python}
+G.~sixohsix.
+\newblock Api twitter python doc.
+
+\bibitem{twitter:api}
+{Twitter Developers}.
+\newblock Rest apis / twitter developers.
+
+\bibitem{twitter4j}
+Twitter4J.
+\newblock Twitter4j - a java library for twitter api.
+\newblock http://twitter4j.org/en/index.html.
+\newblock Last access: 2014-10-11.
+
+\bibitem{wiki:datamining}
+Wikipedia.
+\newblock Mineracao de dados.
+\newblock Last access: 2014-11-20.
+
+\end{thebibliography}
